@@ -4,28 +4,30 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title> Code Quiz</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="style.css"/>
+
 </head>
 <body>
       <h1 class="header">
             Take the Quiz and Do Your Best!!!
       </h1>
-      <div class="header" id="instructions">
-            <button class="start" onclick="startquiz()">Start Here</button>
-
+      <div class="header row" id="instructions">
+            <span class="col-12">Please take the test by clicking the start button. You will have 30 seconds to complete each question.</span>
+            <button class="col-110 start" onclick="startQuiz()">Start Here</button>
       </div>
-      <div>
-            <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-            </ul>
-
+      <div id="container">
       </div>
-      
-</body>
 
-<script src="quiz.js">
+      <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js">
+      </script>
+      <script src="quiz.js">
 
 </script>
+      
+</body>
 </html>
