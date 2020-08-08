@@ -1,3 +1,6 @@
+// start quiz hides button, calls display question function, and calls starts timmer funtion
+// funtion displayQuestion Displays the questions and choices
+
 var questions = [
       {
             question: 'What is the color of the sky?', 
@@ -32,19 +35,21 @@ var questions = [
 ];
 
 var currentQuestion = 0;
-const $submitButton = $('#submitButton')
-
-
-
 var right = 0;
 var wrong = 0;
 
 function startQuiz() {
       const testInstructions = alert('Please make sure to hit submit after each answer');
-      var output = [];
       const $instructions = $('#instructions');
-      const $answers = $('#container');
+      $instructions.text('Choose an answer:');
+      const $answers = $('#questionAnswers');
+      $answers.append('<div>');
+      $answers.addClass('.questionss');
+      $answers.$('.questionss', displayAnswers);
+      console.log($answers);
+}
 
+funtion displayAnswers() {
       $.each(questions[currentQuestion].choice, function(index, value) {
             const $answerButton = $('<button>');
             $answerButton.addClass('');
@@ -52,17 +57,26 @@ function startQuiz() {
             $answerButton.text(value);
             console.log('value', value);
             $('#buttons').append($answerButton);
-
-      
-
       })
+}
 
-      // currentQuestion++;
+funtion displayQuestions() {
+      $.each(questions[currentQuestion].choice, function(index, value) {
+            const $answerButton = $('<button>');
+            $answerButton.addClass('');
+            $answerButton.attr('');
+            $answerButton.text(value);
+            console.log('value', value);
+            $('#buttons').append($answerButton);
+      })
+}
+
+// currentQuestion++;
 
       
       // // Function for rendering questions
       // for (var i = 0; i < questions.length; i++) {
-      //       $instructions.text('Choose an answer:');
+      
       //       testQuestion = questions[i].question;
       //       console.log(testQuestion);
       //       $('#container').addClass('.css');
@@ -84,13 +98,6 @@ function startQuiz() {
       
       // var submit = $('<button>').text('submit').addId
       // $instructions.append(submit)
-      
-
-}
-
-// funtion displayQuestions() {
-
-// }
 
 // we want to target the questions object
 // we want the question key to be read
