@@ -1,7 +1,7 @@
 // start quiz hides button, calls display question function, and calls starts timmer funtion
 // funtion displayQuestion Displays the questions and choices
 
-var questions = [
+const questions = [
       {
             question: 'What is the color of the sky?', 
             answers: 'the sky is blue',
@@ -35,21 +35,45 @@ var questions = [
 ];
 
 var currentQuestion = 0;
+var currentAnswer = 0;
 var right = 0;
 var wrong = 0;
+const displayQ = displayQuestions();
 
 function startQuiz() {
       const testInstructions = alert('Please make sure to hit submit after each answer');
       const $instructions = $('#instructions');
       $instructions.text('Choose an answer:');
-      const $answers = $('#questionAnswers');
-      $answers.append('<div>');
-      $answers.addClass('.questionss');
-      $answers.$('.questionss', displayAnswers);
-      console.log($answers);
+      const $test = $('#questionAnswers');
+
+      // creating a new div for generated questions
+      const $newQuestion = $('<div>');
+      $newQuestion.addClass('questionss');
+      $test.append($newQuestion);
+
+      // creating a new div for generated answers
+      const $newAnswers = $('<div>');
+      $newAnswers.addClass('answerss');
+      $test.append($newAnswers);
+
+      // // adding the submit buttom
+      const submit = $('<button>');
+      submit.addClass('sub');
+      submit.text('submit');
+      $test.append(submit);
+
+      // // adding in the functions to display the test
+      // var display = $('#questionss')
+      // questions.append(displayQ);
+      // console.log(questionss);
+
+
+
 }
 
-funtion displayAnswers() {
+
+
+function displayAnswers() {
       $.each(questions[currentQuestion].choice, function(index, value) {
             const $answerButton = $('<button>');
             $answerButton.addClass('');
@@ -60,7 +84,7 @@ funtion displayAnswers() {
       })
 }
 
-funtion displayQuestions() {
+function displayQuestions() {
       $.each(questions[currentQuestion].choice, function(index, value) {
             const $answerButton = $('<button>');
             $answerButton.addClass('');
