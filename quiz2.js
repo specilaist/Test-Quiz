@@ -39,12 +39,19 @@ var currentAnswer = 0;
 var right = 0;
 var wrong = 0;
 const displayQ = displayQuestions();
+const displayA = disp
 
 function startQuiz() {
       const testInstructions = alert('Please make sure to hit submit after each answer');
       const $instructions = $('#instructions');
       $instructions.text('Choose an answer:');
       const $test = $('#questionAnswers');
+
+      // addind a timer
+      const $timer = $('<div>');
+      $timer.addClass('timer');
+      $test.append($timer);
+
 
       // creating a new div for generated questions
       const $newQuestion = $('<div>');
@@ -62,15 +69,7 @@ function startQuiz() {
       submit.text('submit');
       $test.append(submit);
 
-      // // adding in the functions to display the test
-      // var display = $('#questionss')
-      // questions.append(displayQ);
-      // console.log(questionss);
-
-
-
 }
-
 
 
 function displayAnswers() {
@@ -80,20 +79,31 @@ function displayAnswers() {
             $answerButton.attr('');
             $answerButton.text(value);
             console.log('value', value);
-            $('#buttons').append($answerButton);
+            $('.answerss').append($answerButton);
       })
 }
 
 function displayQuestions() {
-      $.each(questions[currentQuestion].choice, function(index, value) {
-            const $answerButton = $('<button>');
-            $answerButton.addClass('');
-            $answerButton.attr('');
-            $answerButton.text(value);
+      $(questions[currentQuestion].question, function(index, value) {
+            const $testQuestion = $('<p>');
+            $('.questionss').append($testQuestion);
+            $testQuestion.addClass('testQuestion');
+            // $testQuestion.attr('');
+            $($testQuestion).text(value);
             console.log('value', value);
-            $('#buttons').append($answerButton);
+            
       })
 }
+
+displayQuestions();
+displayAnswers();
+
+// adding in the functions to display the test
+var display = $('#questionss')
+display.text(displayQ);
+console.log(displayQuestions());
+
+
 
 // currentQuestion++;
 
