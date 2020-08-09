@@ -82,9 +82,6 @@ function startQuiz() {
 
 }
 
-// $newQuestion.text = questions[currentQuestion].question;
-// console.log(questions[currentQuestion].question);
-
 function createQuestion(index) {
       $('.questionss').empty();
       const $testQuestion = $('<p>');
@@ -94,17 +91,28 @@ function createQuestion(index) {
 }
 
 function createAnswers(index) {
+      $('.answers').empty();
       //empty previous buttons
       //make 4 answer buttons that each have
-      //for loop
-            //make button
-            questions[index].choice[i]
-            //append it
+      for (var i = 0; i < 4; i++) {
+            const $buttons = $('<button>');
+            $buttons.addClass('testAnswers');
+            $buttons.text(questions[index].choice[i]);
+            $('.answers').append($buttons)
+      }
+   
 }
 
 $(document).on('click', '.sub' , function() {
       $(this).val()
 })
+
+
+
+   // //for loop
+      //       //make button
+      //       questions[index].choice[i]
+      //       //append it
 
 // function displayQuestions() {
 //       $.each(questions[currentQuestion].question, function(index, value) {
