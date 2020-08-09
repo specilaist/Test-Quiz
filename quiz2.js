@@ -1,5 +1,7 @@
 // start quiz hides button, calls display question function, and calls starts timmer funtion
 // funtion displayQuestion Displays the questions and choices
+// $(document).ready(function() {
+
 
 const questions = [
       {
@@ -39,11 +41,13 @@ var currentAnswer = 0;
 var right = 0;
 var wrong = 0;
 var position = 0;
+let index = 0;
+// console.log(position);
 // const displayQ = displayQuestions();
 // const displayA = disp
 
 function startQuiz() {
-      const testInstructions = alert('Please make sure to hit submit after each answer');
+      const testInstructions = alert('Please make sure to answer before 100');
       const $instructions = $('#instructions');
       $instructions.text('Choose an answer:');
       const $test = $('#questionAnswers');
@@ -82,7 +86,7 @@ function startQuiz() {
 
 }
 
-function createQuestion(index) {
+function createQuestion() {
       $('.questionss').empty();
       const $testQuestion = $('<p>');
       $testQuestion.addClass('testQuestion');
@@ -90,7 +94,7 @@ function createQuestion(index) {
       $('.questionss').append($testQuestion);
 }
 
-function createAnswers(index) {
+function createAnswers() {
       $('.answers').empty();
       //empty previous buttons
       //make 4 answer buttons that each have
@@ -98,88 +102,41 @@ function createAnswers(index) {
             const $buttons = $('<button>');
             $buttons.addClass('testAnswers');
             $buttons.text(questions[index].choice[i]);
-            $('.answers').append($buttons)
+            $('.answers').append($buttons);
       }
-   
 }
 
-$(document).on('click', '.sub' , function() {
-      $(this).val()
+function showScore() {
+      $('.timer').append();
+      const $results = $('<p>Good Job!!!</p>');
+      let finalScore = 'You got ' + right + ' right out of 6!'
+      const $score = $('<form>');
+      $('.header').append($results);
+      $('#instructions').append(finalScore);
+      return;
+}
+
+$(document).on('click', function() {
+      createQuestion();
+      createAnswers();
+      var userAnswer = event.target.textContent
+      var rightAnswer = questions[index].answers
+      console.log(userAnswer);
+      console.log(rightAnswer);
+      if (userAnswer === rightAnswer) {
+            right++;
+            console.log(right);
+            alert('Coggratulations you got ' + right + ' right');
+      } else {
+            wrong++;
+            // console.log(wrong);
+      } index++;
+      console.log(index);
+      if (index === 6) {
+            showScore();
+      }
+
 })
 
 
-
-   // //for loop
-      //       //make button
-      //       questions[index].choice[i]
-      //       //append it
-
-// function displayQuestions() {
-//       $.each(questions[currentQuestion].question, function(index, value) {
-            // const $testQuestion = $('<p>');
-            // console.log($testQuestion);
-            // $('.questionss').append($testQuestion);
-            // $testQuestion.addClass('testQuestion');
-            // $testQuestion.attr('data-letter', value);
-            // $testQuestion.text(value);
-            // console.log('value', value);
-            
-//       })
-// }
-
-
-// function displayAnswers() {
-//       $.each(questions[currentQuestion].choice, function(index, value) {
-//             const $answerButton = $('<button>');
-//             $answerButton.addClass('');
-//             $answerButton.attr('');
-//             $answerButton.text(value);
-//             console.log('value', value);
-//             $('.answerss').append($answerButton);
-//       })
-// }
-
-
-
-// // adding in the functions to display the test
-// var display = $('#questionss')
-// display.text(displayQ);
-// console.log(displayQuestions());
-
-
-
-// currentQuestion++;
-
-      
-      // // Function for rendering questions
-      // for (var i = 0; i < questions.length; i++) {
-      
-      //       testQuestion = questions[i].question;
-      //       console.log(testQuestion);
-      //       $('#container').addClass('.css');
-      //       $('#container').text(testQuestion);
-
-
-      //       for (var i = 0; i < 4; i++) {
-      //             var answer = $('<div>');
-      //             answer.addClass('.answerss');
-      //             $answers.append(answer);
-
-      //       } return;
-
-      //       // $questions.append('#container');
-      //       // answers = [];  
-
-      // }
-      //       // on click listener
-      
-      // var submit = $('<button>').text('submit').addId
-      // $instructions.append(submit)
-
-// we want to target the questions object
-// we want the question key to be read
-// we want to create four choices with button attributes
-// if the test taker gets it wrong/right an alert pops up telling them
-// an alert tells them how many right/wrong they have
-// At the end of the test they receive a final grade
-// they can add their name and include it as a highscore
+// });

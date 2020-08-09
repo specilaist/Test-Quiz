@@ -1,12 +1,30 @@
 body {
       padding: 20px;
+      background-color: bisque;
 }
 
 #instructions {
       margin-left: 50px;
-
 }
 
 #container {
       margin-left: 100px;
+}
+
+.sub {
+      background-color: coral;
+}
+
+.questionss {
+      margin: 20px;
+}
+
+.testAnswers {
+      background-color: coral;
+      margin: auto;
+      align-items: center;
+}
+
+.timer {
+      margin-left: 200px;
 }
