@@ -38,8 +38,9 @@ var currentQuestion = 0;
 var currentAnswer = 0;
 var right = 0;
 var wrong = 0;
-const displayQ = displayQuestions();
-const displayA = disp
+var position = 0;
+// const displayQ = displayQuestions();
+// const displayA = disp
 
 function startQuiz() {
       const testInstructions = alert('Please make sure to hit submit after each answer');
@@ -48,60 +49,94 @@ function startQuiz() {
       const $test = $('#questionAnswers');
 
       // addind a timer
-      const $timer = $('<div>');
+      let $timer = $('<div>');
       $timer.addClass('timer');
       $test.append($timer);
 
 
       // creating a new div for generated questions
-      const $newQuestion = $('<div>');
+      let $newQuestion = $('<div>');
       $newQuestion.addClass('questionss');
       $test.append($newQuestion);
 
-      // creating a new div for generated answers
-      const $newAnswers = $('<div>');
-      $newAnswers.addClass('answerss');
-      $test.append($newAnswers);
-
       // // adding the submit buttom
-      const submit = $('<button>');
-      submit.addClass('sub');
-      submit.text('submit');
+      const submit = $('<div>');
+      submit.addClass('answers');
       $test.append(submit);
 
+      var timeLeft = 100;
+      var timerInterval = setInterval(function() {
+            timeLeft--;
+            $timer.text("Time left: " + timeLeft);
+    
+            if(timeLeft === 0) {
+              clearInterval(timerInterval);
+              showScore();
+            }
+          }, 1000);
+      $('.timer').append(timerInterval);
+
+
+      createQuestion(position);
+      createAnswers(position);
+
 }
 
+// $newQuestion.text = questions[currentQuestion].question;
+// console.log(questions[currentQuestion].question);
 
-function displayAnswers() {
-      $.each(questions[currentQuestion].choice, function(index, value) {
-            const $answerButton = $('<button>');
-            $answerButton.addClass('');
-            $answerButton.attr('');
-            $answerButton.text(value);
-            console.log('value', value);
-            $('.answerss').append($answerButton);
-      })
+function createQuestion(index) {
+      $('.questionss').empty();
+      const $testQuestion = $('<p>');
+      $testQuestion.addClass('testQuestion');
+      $testQuestion.text(questions[index].question);
+      $('.questionss').append($testQuestion);
 }
 
-function displayQuestions() {
-      $(questions[currentQuestion].question, function(index, value) {
-            const $testQuestion = $('<p>');
-            $('.questionss').append($testQuestion);
-            $testQuestion.addClass('testQuestion');
-            // $testQuestion.attr('');
-            $($testQuestion).text(value);
-            console.log('value', value);
+function createAnswers(index) {
+      //empty previous buttons
+      //make 4 answer buttons that each have
+      //for loop
+            //make button
+            questions[index].choice[i]
+            //append it
+}
+
+$(document).on('click', '.sub' , function() {
+      $(this).val()
+})
+
+// function displayQuestions() {
+//       $.each(questions[currentQuestion].question, function(index, value) {
+            // const $testQuestion = $('<p>');
+            // console.log($testQuestion);
+            // $('.questionss').append($testQuestion);
+            // $testQuestion.addClass('testQuestion');
+            // $testQuestion.attr('data-letter', value);
+            // $testQuestion.text(value);
+            // console.log('value', value);
             
-      })
-}
+//       })
+// }
 
-displayQuestions();
-displayAnswers();
 
-// adding in the functions to display the test
-var display = $('#questionss')
-display.text(displayQ);
-console.log(displayQuestions());
+// function displayAnswers() {
+//       $.each(questions[currentQuestion].choice, function(index, value) {
+//             const $answerButton = $('<button>');
+//             $answerButton.addClass('');
+//             $answerButton.attr('');
+//             $answerButton.text(value);
+//             console.log('value', value);
+//             $('.answerss').append($answerButton);
+//       })
+// }
+
+
+
+// // adding in the functions to display the test
+// var display = $('#questionss')
+// display.text(displayQ);
+// console.log(displayQuestions());
 
 
 
